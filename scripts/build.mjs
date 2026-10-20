@@ -1,4 +1,6 @@
-import { cp, mkdir, rm } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { zipSync } from "fflate";
 import { build } from "vite";
 
 await rm("dist", { recursive: true, force: true });
@@ -68,3 +70,22 @@ await build({
     sourcemap: true,
   },
 });
+
+const packageJson = JSON.parse(await readFile("package.json", "utf8"));
+const archiveName = `limeEnglish_v${packageJson.version}.zip`;
+const archiveFiles = {};
+
+async function collectFiles(directory, prefix = "") {
+  const entries = await readdir(directory, { withFileTypes: true });
+  entries.sort((left, right) => left.name.localeCompare(right.name));
+  for (const entry of entries) {
+    const relativePath = prefix ? `${prefix}/${entry.name}` : entry.name;
+    const sourcePath = join(directory, entry.name);
+    if (entry.isDirectory()) await collectFiles(sourcePath, relativePath);
+    else archiveFiles[relativePath] = await readFile(sourcePath);
+  }
+}
+
+await collectFiles("dist");
+await writeFile(archiveName, zipSync(archiveFiles, { level: 9 }));
+console.log(`Created ${archiveName}`);
