@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f5f1">
+  <title>limeEnglish · 词汇详情</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <main class="shell word-shell">
+    <nav class="topbar" aria-label="主要页面">
+      <a class="brand" href="library.html" aria-label="limeEnglish 词汇库">
+        <img class="brand-mark" src="icons/icon.svg" alt="">
+        <span><strong>limeEnglish</strong><small>语境单词助手</small></span>
+      </a>
+      <nav class="product-nav" aria-label="主要页面">
+        <a class="active" href="library.html">词汇库</a>
+        <a href="options.html">设置</a>
+      </nav>
+    </nav>
+
+    <article class="word-page" aria-labelledby="detail-title">
+      <a class="word-back" href="library.html">← 返回词汇库</a>
+      <header class="word-page-header">
+        <p class="section-kicker">词汇详情</p>
+        <h1 id="detail-title">正在读取…</h1>
+        <p id="detail-phonetic" class="word-page-phonetic" hidden></p>
+        <p id="detail-meta"></p>
+      </header>
+      <p id="word-status" class="word-status" role="status" aria-live="polite">正在读取本机词汇记录…</p>
+      <div id="detail-contexts" class="detail-contexts"></div>
+    </article>
+
+    <footer class="page-footer"><span>limeEnglish · 版本 0.0.1</span><span>在语境中理解每个词。</span></footer>
+  </main>
+  <script src="word.js"></script>
+</body>
+</html>

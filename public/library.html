@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f5f1">
+  <title>limeEnglish · 词汇库</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <main class="shell library-shell">
+    <nav class="topbar" aria-label="主要页面">
+      <a class="brand" href="library.html" aria-label="limeEnglish 词汇库">
+        <img class="brand-mark" src="icons/icon.svg" alt="">
+        <span><strong>limeEnglish</strong><small>语境单词助手</small></span>
+      </a>
+      <nav class="product-nav" aria-label="主要页面">
+        <a class="active" href="library.html" aria-current="page">词汇库</a>
+        <a href="options.html">设置</a>
+      </nav>
+    </nav>
+
+    <header class="page-intro library-header">
+      <div>
+        <p class="eyebrow">词汇库</p>
+        <h1>我的词汇</h1>
+        <p>查看阅读中遇见的单词、语境与释义。</p>
+      </div>
+      <p class="library-prompt"><span>快速使用</span>在任意网页双击英文单词。</p>
+    </header>
+
+    <section class="metrics" aria-label="词汇统计">
+      <article><strong id="word-total">—</strong><span>个词</span></article>
+      <article><strong id="encounter-total">—</strong><span>次遇见</span></article>
+      <article><strong id="source-total">—</strong><span>篇来源</span></article>
+      <article><strong id="analyzed-total">—</strong><span>已有理解</span></article>
+    </section>
+
+    <section class="library-panel" aria-labelledby="library-title">
+      <div class="library-heading">
+        <div><p class="section-kicker">词汇记录</p><h2 id="library-title">全部词汇</h2></div>
+        <p id="result-count" aria-live="polite"></p>
+      </div>
+
+      <div class="library-toolbar">
+        <label class="search-field" for="word-search">
+          <span class="visually-hidden">搜索</span>
+          <input id="word-search" type="search" placeholder="搜索单词、释义或原句" autocomplete="off">
+        </label>
+        <label class="sort-field" for="word-sort">
+          <span class="visually-hidden">排序</span>
+          <select id="word-sort" aria-label="排序">
+            <option value="recent">最近遇见</option>
+            <option value="frequent">遇见最多</option>
+            <option value="alphabetical">字母顺序</option>
+            <option value="oldest">最早收录</option>
+          </select>
+        </label>
+        <div class="data-actions">
+          <button id="delete-selected" type="button" class="danger-subtle" disabled>删除所选</button>
+          <button id="clear-all" type="button" class="danger-subtle">清空全部</button>
+        </div>
+      </div>
+
+      <p id="library-status" class="library-status" role="status" aria-live="polite"></p>
+
+      <div id="table-wrap" class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="check-cell"><input id="select-all" type="checkbox" aria-label="选择当前显示的全部词汇"></th>
+              <th>词汇</th>
+              <th>在这里的意思</th>
+              <th>来自</th>
+              <th class="number-cell">遇见</th>
+              <th>最近</th>
+            </tr>
+          </thead>
+          <tbody id="word-rows"></tbody>
+        </table>
+      </div>
+
+      <nav id="pagination" class="pagination" aria-label="词汇分页" hidden>
+        <button id="previous-page" type="button" class="page-direction">上一页</button>
+        <div id="page-numbers" class="page-numbers" aria-label="选择页码"></div>
+        <p id="page-summary" class="page-summary" aria-live="polite"></p>
+        <button id="next-page" type="button" class="page-direction">下一页</button>
+      </nav>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <span aria-hidden="true">Aa</span>
+        <h3>词汇库还是空的</h3>
+        <p>阅读英文网页时，双击想了解的单词即可添加。</p>
+      </div>
+    </section>
+
+    <footer class="page-footer"><span>limeEnglish · 版本 0.0.1</span><span>双击单词，查看语境释义。</span></footer>
+  </main>
+  <script src="library.js"></script>
+</body>
+</html>

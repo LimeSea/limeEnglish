@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f5f1">
+  <title>limeEnglish · 阅读设置</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <main class="shell settings-shell">
+    <nav class="topbar" aria-label="主要页面">
+      <a class="brand" href="library.html" aria-label="limeEnglish 词汇库">
+        <img class="brand-mark" src="icons/icon.svg" alt="">
+        <span><strong>limeEnglish</strong><small>语境单词助手</small></span>
+      </a>
+      <nav class="product-nav" aria-label="主要页面">
+        <a href="library.html">词汇库</a>
+        <a class="active" href="options.html" aria-current="page">设置</a>
+      </nav>
+    </nav>
+
+    <header class="page-intro settings-intro">
+      <p class="eyebrow">阅读设置</p>
+      <h1>连接模型</h1>
+      <p>完成设置后，在网页上双击英文单词即可查看语境释义。</p>
+    </header>
+
+    <form id="settings" class="panel settings-panel">
+      <div class="panel-heading">
+        <div><p class="section-kicker">模型设置</p><h2>连接与选择</h2></div>
+        <p>设置仅保存在此设备</p>
+      </div>
+
+      <fieldset>
+        <legend><span>1</span><span>选择服务</span></legend>
+        <div class="gateway-picker">
+          <span class="gateway-logo" aria-hidden="true">M</span>
+          <div class="gateway-copy">
+            <label for="gateway">模型网关</label>
+            <strong>Magpie</strong>
+            <small>统一管理模型和供应商凭证</small>
+          </div>
+          <div class="gateway-select">
+            <select id="gateway" required aria-label="网关服务">
+              <option value="magpie">Magpie</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span>2</span><span>连接网关</span></legend>
+        <label for="base-url">服务地址</label>
+        <div class="connection-row">
+          <div class="control-wrap">
+            <input id="base-url" type="url" inputmode="url" required maxlength="500" spellcheck="false" placeholder="http://127.0.0.1:3425/v1">
+          </div>
+          <button id="load-models" type="button" class="secondary">连接并获取模型</button>
+        </div>
+        <p class="hint">本机可使用 HTTP；远程地址必须使用 HTTPS。</p>
+      </fieldset>
+
+      <fieldset>
+        <legend><span>3</span><span>选择模型</span></legend>
+        <div class="model-picker">
+          <div class="model-picker-head">
+            <label for="model">用于语境分析</label>
+            <span id="model-count" class="model-count">未连接</span>
+          </div>
+          <div class="control-wrap select-control">
+            <select id="model" required><option value="">请先连接网关</option></select>
+          </div>
+          <p id="model-selection" class="model-selection">连接后，选择一个模型。</p>
+        </div>
+        <details class="privacy-details">
+          <summary>会发送哪些内容？</summary>
+          <p>只发送所选单词及附近的有限语境；不发送网址、遇见次数或整页正文。供应商密钥由 Magpie 管理。</p>
+        </details>
+      </fieldset>
+
+      <footer class="save-row">
+        <p id="status" role="status" aria-live="polite"></p>
+        <div class="save-actions">
+          <button id="test" type="button" class="secondary" disabled>测试所选模型</button>
+          <button id="save-settings" type="submit" class="primary" disabled>保存并开始使用</button>
+        </div>
+      </footer>
+    </form>
+
+    <footer class="page-footer"><span>limeEnglish · <span id="app-version">版本 0.0.1</span></span><span>双击单词，查看语境释义。</span></footer>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

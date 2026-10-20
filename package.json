@@ -1,0 +1,28 @@
+{
+  "name": "lime-english",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && node scripts/build.mjs",
+    "test": "vitest run",
+    "test:e2e": "corepack pnpm build && playwright test"
+  },
+  "dependencies": {
+    "idb": "8.0.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/chrome": "0.3.5",
+    "@types/node": "24.10.0",
+    "fake-indexeddb": "6.2.6",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  }
+}
